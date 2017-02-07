@@ -1,5 +1,6 @@
 package com.niit.backend1.daoimpl;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,8 +23,13 @@ public class UserOrderDaoImpl implements UserOrderDao {
 	}
 
 	public UserOrder getUserOrderById(int userOrderId) {
+		/*System.out.println("====================TEST====================");
 		String hql = "from UserOrder where userOrderId=" + userOrderId;
 		UserOrder userOrder = (UserOrder) sessionFactory.getCurrentSession().createQuery(hql).getSingleResult();
+		return userOrder;*/
+		
+		Session session=sessionFactory.getCurrentSession();
+		UserOrder userOrder=(UserOrder)session.createQuery("from UserOrder where userorderid="+userOrderId).getSingleResult();
 		return userOrder;
 	}
 }

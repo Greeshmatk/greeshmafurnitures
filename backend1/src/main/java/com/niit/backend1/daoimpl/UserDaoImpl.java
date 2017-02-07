@@ -31,7 +31,7 @@ public class UserDaoImpl implements UserDao {
 		
 		ShippingAddress shippingAddress = new ShippingAddress();
 		shippingAddress.setUser(user);
-		user.setAddress(shippingAddress);
+		user.setShippingAddress(shippingAddress);
 		
 		sessionFactory.getCurrentSession().saveOrUpdate(user);
 	}

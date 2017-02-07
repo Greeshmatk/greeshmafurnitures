@@ -14,12 +14,12 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- <dependency>
+		 <!-- <dependency>
 			<groupId>com.niit</groupId>
-			<artifactId>myride-rest</artifactId>
+			<artifactId>rest</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<classifier>classes</classifier>
-		</dependency> -->
+		</dependency>  -->
 		<!-- Spring framework dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>

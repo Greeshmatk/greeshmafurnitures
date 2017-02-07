@@ -33,6 +33,14 @@ public class AppController {
 		return view;
 	}
 	
+	
+	@RequestMapping("/contact")
+	public ModelAndView contact() {
+		ModelAndView view = new ModelAndView("contact");
+		return view;
+	}
+	
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout) {
 		ModelAndView view = new ModelAndView("login");

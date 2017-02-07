@@ -37,11 +37,13 @@ public class User implements Serializable {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "addressId")
-	private ShippingAddress address;
+	private ShippingAddress shippingAddress;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cartId")
 	private Cart cart;
+	
+	
 
 	public int getUserId() {
 		return userId;
@@ -99,12 +101,12 @@ public class User implements Serializable {
 		this.cart = cart;
 	}
 
-	public ShippingAddress getAddress() {
-		return address;
+	public ShippingAddress getShippingAddress() {
+		return shippingAddress;
 	}
 
-	public void setAddress(ShippingAddress address) {
-		this.address = address;
+	public void setShippingAddress(ShippingAddress shippingAddress) {
+		this.shippingAddress =shippingAddress; 
 	}
 
 }

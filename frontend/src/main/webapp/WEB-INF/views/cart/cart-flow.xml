@@ -1,0 +1,50 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+
+	<var name="shippingAddress" class="com.niit.backend1.model.ShippingAddress" />
+	<var name="order" class="com.niit.backend1.model.UserOrder" />
+	<var name="itemlist" class="com.niit.backend1.model.Item" />
+
+	<action-state id="orderProcess">
+		<evaluate expression="userOrderDao.getUserOrderById(requestParameters.orderid)"	result="order"></evaluate>
+		<transition to="shippingAddress"></transition>
+	</action-state>
+
+	<view-state id="shippingAddress" view="ShippingAddress.jsp"	model="flowScope.order">
+		<transition on="exit" to="exit"></transition>
+		<transition on="event1" to="shippingAddressMethod"></transition>
+	</view-state>
+
+	<action-state id="shippingAddressMethod">
+		<evaluate expression="shippingAddressDao.add(order.user)"></evaluate>
+		<transition on="success" to="checkoutconfirmationMethod"></transition>
+	</action-state>
+
+	<action-state id="checkoutconfirmationMethod">
+		<evaluate expression="itemDao.getCartItems(order.cart.cartId)" result="itemlist"></evaluate>
+		<transition on="success" to="checkoutconfirmation"></transition>
+	</action-state>
+
+	<view-state id="checkoutconfirmation" view="checkoutconfirmation.jsp"
+		model="itemlist">
+		<transition on="shippingaddress" to="shippingAddress"></transition>
+		<transition on="event2" to="removeitemsfromcart"></transition>
+	</view-state>
+
+	<action-state id="removeitemsfromcart">
+		<evaluate expression="itemDao.removeAll(order.cart)"></evaluate>
+		<transition to="orderplacement"></transition>
+	</action-state>
+	
+
+	<end-state id="orderplacement" view="orderplacement.jsp">
+	</end-state>
+
+
+
+
+
+</flow>

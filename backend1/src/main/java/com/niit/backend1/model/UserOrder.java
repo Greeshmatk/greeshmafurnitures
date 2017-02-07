@@ -17,9 +17,11 @@ public class UserOrder implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userOrderId;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cartId")
 	private Cart cart;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "userId")
 	private User user;
@@ -47,5 +49,7 @@ public class UserOrder implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	
 
 }

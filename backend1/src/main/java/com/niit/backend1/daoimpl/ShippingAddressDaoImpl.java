@@ -8,8 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.backend1.dao.ShippingAddressDao;
 import com.niit.backend1.model.ShippingAddress;
+import com.niit.backend1.model.User;
 
-@Repository
+@Repository("shippingAddressDao")
 @EnableTransactionManagement
 @Transactional
 public class ShippingAddressDaoImpl implements ShippingAddressDao {
@@ -18,8 +19,8 @@ public class ShippingAddressDaoImpl implements ShippingAddressDao {
 	SessionFactory sessionFactory;
 	
 	@Transactional
-	public void add(ShippingAddress shippingAddress) {
-		sessionFactory.getCurrentSession().saveOrUpdate(shippingAddress);
+	public void add(User user) {
+		sessionFactory.getCurrentSession().saveOrUpdate(user.getShippingAddress());
 	}
 
 	@Transactional
@@ -27,4 +28,5 @@ public class ShippingAddressDaoImpl implements ShippingAddressDao {
 		sessionFactory.getCurrentSession().update(shippingAddress);
 	}
 
+	
 }
