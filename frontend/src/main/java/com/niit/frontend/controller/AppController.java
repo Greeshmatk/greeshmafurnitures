@@ -40,6 +40,12 @@ public class AppController {
 		return view;
 	}
 	
+	@RequestMapping("/about")
+	public ModelAndView about() {
+		ModelAndView view = new ModelAndView("about");
+		return view;
+	}
+	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout) {

@@ -80,40 +80,7 @@ public class CartController {
 	}
 
 	
-	/*@RequestMapping("/addToCart/{productId")
-	public ModelAndView cart(@PathVariable("productId") int productId, Principal principal) {
-		ModelAndView model = new ModelAndView("cart");
-		
-		User user = userDao.getUserByUsername(principal.getName());
-		model.addObject("user", user);
-		Cart cart = user.getCart();
-		Product product = productDao.getById(productId);
-		List<Item> items = cart.getItems();
-		
-		// Check if the item exists in the cart
-		for (Item item : items) {
-			if (product.getProductId() == item.getProduct().getProductId()) {
-				// If the item exists, increment the quantity and the total
-				item.setQuantity(item.getQuantity() + 1);
-				item.setItemTotal(item.getQuantity() * product.getPrice());
-				itemDao.add(item);
-				
-				return model;
-			}
-		}
-		
-		// If the item does not exist in the cart
-		Item item = new Item();
-		item.setProduct(product);
-		item.setQuantity(1);
-		item.setItemTotal(item.getQuantity() * product.getPrice());
-		item.setCart(cart);
-		
-		itemDao.add(item);
-		
-		return model;
-	}
-	*/
+	
 	
 	@RequestMapping("/order")
 	public String orderGo(Principal principal, Model model) {
@@ -129,28 +96,6 @@ public class CartController {
 	}
 
 	
-	/*@RequestMapping(value = "/placeOrder/{cartId}")
-	public String placeOrder(@PathVariable("cartId") int cartId) {
-		UserOrder userOrder = new UserOrder();
-		Cart cart = cartDao.getById(cartId);
-		userOrder.setCart(cart);
-		
-		User user = cart.getUser();
-		userOrder.setUser(user);
-		
-		userOrderDao.add(userOrder);
-		
-		return "redirect:/checkout?userOrderId=" + userOrder.getUserOrderId();
-	}
-	*/
-	/*@RequestMapping("/showCart")
-	public ModelAndView showCart(Principal principal) {
-		ModelAndView model = new ModelAndView("cart");
-		User user = userDao.getUserByUsername(principal.getName());
-		model.addObject("user", user);
-		System.out.println(user.getFullName());
-		return model;
-	}*/
 	
 	@RequestMapping("/cart")
 	public String Products(Model model, Principal principal) {

@@ -130,6 +130,10 @@
 	}); //Close 'function()'
 </script>
 <style>
+
+
+
+
 .bg-2 {
 	background-color: #2f2f2f; /* Dark Blue */
 	color: #ffffff;
